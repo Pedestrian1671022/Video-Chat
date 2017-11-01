@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <org.ros.android.view.RosImageView
+            android:id="@+id/android_videoSubscriber"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".75" />
+
+        <LinearLayout
+            android:id="@+id/side_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:gravity="right"
+            android:orientation="vertical" >
+
+            <org.ros.android.view.camera.RosCameraPreviewView
+                android:id="@+id/android_videoPublisher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25" />
+
+            <org.ros.android.view.VirtualJoystickView
+                android:id="@+id/virtualJoystick"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
