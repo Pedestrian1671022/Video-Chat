@@ -19,8 +19,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation('org.ros.android_core:android_15:0.2.1')
-    implementation('org.ros.rosjava_messages:audio_common_msgs:0.2.7')
+    implementation 'org.ros.android_core:android_15:0.2.1'
+    implementation files('libs/rosjava_custom_msg-0.1.0.jar')
 }

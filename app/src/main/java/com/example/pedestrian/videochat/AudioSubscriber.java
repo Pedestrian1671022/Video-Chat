@@ -17,7 +17,7 @@ import org.ros.node.ConnectedNode;
 import org.ros.node.Node;
 import org.ros.node.topic.Subscriber;
 
-import audio_common_msgs.AudioData;
+import rosjava_custom_msg.CustomMessage;
 
 public class AudioSubscriber extends AbstractNodeMain {
 
@@ -63,11 +63,11 @@ public class AudioSubscriber extends AbstractNodeMain {
             }
         }
 
-        Subscriber<AudioData> subscriber = connectedNode.newSubscriber(topicName, AudioData._TYPE);
+        Subscriber<CustomMessage> subscriber = connectedNode.newSubscriber(topicName, CustomMessage._TYPE);
 
-        subscriber.addMessageListener(new MessageListener<AudioData>() {
+        subscriber.addMessageListener(new MessageListener<CustomMessage>() {
                     @Override
-                    public void onNewMessage(AudioData message) {
+                    public void onNewMessage(CustomMessage message) {
                         byte[] buffer = message.getData().array();
                         audioTrack.write(buffer, 4, buffer.length-4);
                     }

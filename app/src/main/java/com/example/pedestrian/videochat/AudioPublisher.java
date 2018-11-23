@@ -19,7 +19,7 @@ import org.ros.node.topic.Publisher;
 
 import java.nio.ByteOrder;
 
-import audio_common_msgs.AudioData;
+import rosjava_custom_msg.CustomMessage;
 
 
 public class AudioPublisher extends AbstractNodeMain {
@@ -60,7 +60,7 @@ public class AudioPublisher extends AbstractNodeMain {
 
         audioRecord.startRecording();
 
-        final Publisher<AudioData> publisher = connectedNode.newPublisher(topicName, AudioData._TYPE);
+        final Publisher<CustomMessage> publisher = connectedNode.newPublisher(topicName, CustomMessage._TYPE);
 
         connectedNode.executeCancellableLoop(new CancellableLoop() {
             final byte[] buffer = new byte[bufferSize*2];
@@ -72,7 +72,7 @@ public class AudioPublisher extends AbstractNodeMain {
             @Override
             protected void loop() throws InterruptedException {
                 audioRecord.read(buffer, 0, bufferSize*2);
-                AudioData data = publisher.newMessage();
+                CustomMessage data = publisher.newMessage();
                 data.setData(ChannelBuffers.copiedBuffer(ByteOrder.LITTLE_ENDIAN, buffer, 0, bufferSize*2));
                 publisher.publish(data);
             }
